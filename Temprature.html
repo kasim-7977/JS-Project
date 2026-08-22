@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0;
+      background:linear-gradient(to right, #00c6ff, #0072ff);
+      color: azure;
+      font-size: large;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container{
+      background: rgba(255,255,255,0.3);
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      
+    }
+    .Types{
+      margin: 20px;
+    }
+    label{
+      margin-right:50px;
+    }
+    input{
+      float: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Temprature Calculator</h1>
+    <div class="Types">
+      <label for="Celsius">Celsius:</label>
+      <input type="number" id="Celsius" placeholder="Enter The Temprature " onchange="calculate(event)">
+    </div>
+    <div class="Types">
+      <label for="Fahrenheit">Fahrenheit:</label>
+      <input type="number" id="Fahrenheit" placeholder="Enter The Temprature" onchange="calculate(event)">
+    </div>
+    <div class="Types">
+      <label for="Kelvin">Kelvin:</label>
+      <input type="number" id="Kelvin" placeholder="Enter The Temprature" onchange="calculate(event)">
+    </div>
+  </div>
+  <script>
+    const CelsiusE1 =document.getElementById("Celsius");
+    const FahrenheitE1=document.getElementById("Fahrenheit");
+    const KelvinE1 =document.getElementById("Kelvin");
+
+    function calculate(event){
+      const storage = +event.target.value;
+
+      switch(event.target.id){
+        case "Celsius":
+          KelvinE1.value = (storage + 273.32).toFixed(2);
+          FahrenheitE1.value = (storage * 1.8 + 32).toFixed(2);
+          break;
+        case "Fahrenheit":
+          CelsiusE1.value = ((storage - 32) / 1.8).toFixed(2);
+          KelvinE1.value = ((storage - 32) / 1.8 + 273.32).toFixed(2);
+          break;
+        case "Kelvin":
+          CelsiusE1.value = (storage - 273.32).toFixed(2);
+          FahrenheitE1.value = ((storage - 273.32) * 1.8 + 32).toFixed(2);
+          break;
+        default:
+          break;
+      }
+    }
+
+  </script>
+</body>
+</html>
+
+      
