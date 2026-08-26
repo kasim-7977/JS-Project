@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Finder </title>
+    <style>
+        body{
+            margin: 0;
+            background: linear-gradient(to bottom, lightgreen, lightblue);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            border-radius: 10PX;
+            padding:25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .Area{
+            box-shadow:0 4px 10px rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 20px;
+        }
+        #second{
+            margin-top: 20px;
+        }
+        input{
+            float: right;
+            margin:5px;
+        }
+        h1{
+            text-align: center;
+            -webkit-text-stroke: 0.25px white;
+        }
+        .submit{
+            margin-top: 10px;
+            margin-left: 165px;
+            padding:7px;
+            border-radius: 10px;
+            color:white;
+            background-color: lightskyblue;
+            font-weight: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>Area Finder Of All Shapes</h1>
+    <div class="Area">
+        <label for="Square">Square:</label>
+        <input  type="number" placeholder="Enter the Base Value">
+        <input type="number" placeholder="Enter the Height Value">
+        <p class="value"></p>
+        <button class="submit">submit</button>
+    </div>
+    <div class="Area" id="second">
+        <label for="Rectangle">Rectangle:</label>
+        <input type="number" placeholder="Enter the Base Value">
+        <input type="number" placeholder="Enter the Height Value">
+        <p class="value"></p>
+        <button class="submit">submit</button>
+    </div>
+    </div>
+        <script>
+             const areaBoxes = document.querySelectorAll('.Area');
+
+     areaBoxes.forEach(box => {
+         const inputs = box.querySelectorAll('input[type="number"]');
+         const valueDisplay = box.querySelector('.value');
+         const submitBtn = box.querySelector('.submit');
+
+         submitBtn.addEventListener('click', () => {
+             const base = parseFloat(inputs[0].value);
+             const height = parseFloat(inputs[1].value);
+
+             if (isNaN(base) || isNaN(height)) {
+                 valueDisplay.textContent = 'Please enter valid numbers for both fields.';
+                 return;
+             }
+
+             const area = base * height;
+             valueDisplay.textContent = `Area: ${area}`;
+         });
+     }); 
+
+
+        </script>
+</body>
+</html>
